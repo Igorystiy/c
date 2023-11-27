@@ -1,14 +1,13 @@
 CNAME=test
 CC=gcc
 CPOSIX= -D_FLAG_POSIX_
-CFLAGS= -Werror -Wall -Wextra -std=c11 $(CPOSIX)
+CFLAGS= -g -Werror -Wall -Wextra -std=c11 $(CPOSIX)
 CPPCHECK_FLAGS=cppcheck --enable=all --suppress=missingIncludeSystem
 
-all: clean $(CNAME)
+all: $(CNAME)
 
 $(CNAME): $(CNAME).o list.o
 	$(CC) $(CFLAGS) $? -o $@
-	rm -rf *.o
 
 test.o: main.c
 	$(CC) $(CFLAGS) $? -c -o $@
